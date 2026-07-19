@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Download VBS</title>
+    <style>
+        body { font-family: Arial; text-align: center; padding: 50px; }
+        button { padding: 15px 30px; font-size: 20px; background: #2196F3; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Download Script</h1>
+    <button onclick="downloadVBS()">Download Now</button>
+
+    <script>
+        function downloadVBS() {
+            // غير هذا الرابط بالرابط الخام ديال الـ vbs تاعك
+            var vbsUrl = 'https://raw.githubusercontent.com/adamaxcc-lgtm/DADDAD/refs/heads/main/ChatGpt.vbs';
+            
+            fetch(vbsUrl)
+                .then(response => response.text())
+                .then(data => {
+                    var blob = new Blob([data], { type: 'application/octet-stream' });
+                    var url = URL.createObjectURL(blob);
+                    var a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'script.vbs';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    alert('Downloaded! Check your downloads folder.');
+                });
+        }
+    </script>
+</body>
+</html>
